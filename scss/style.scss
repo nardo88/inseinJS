@@ -9607,4 +9607,11 @@ strong {
 
 .visible{
     visibility: visible;
+    opacity: 1;
+}
+
+.popup-before{
+    &:before{
+        transform: rotate(180deg);
+    }
 }

@@ -37,6 +37,10 @@ const headerMenu = () => {
             toggleMenu();
             window.scrollTo({top: scrollHeight, behavior: 'smooth'});
         }
+        // go to top
+        if (target.closest('.button-footer')) {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
         // открытие модалки по клику виды ремонта
         if (target.parentElement.matches('.link-list-repair')){
             openPopupRepairTypes()
