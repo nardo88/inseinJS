@@ -1,0 +1,1 @@
+(()=>{"use strict";var e,c;e=document.querySelector(".header-contacts__arrow"),c=document.querySelector(".header-contacts__phone-number-accord"),e.addEventListener("click",(function(){e.children[0].classList.toggle("header-contacts__arrow--active"),c.classList.toggle("header-contacts__phone-number-accord--active")}))})();
