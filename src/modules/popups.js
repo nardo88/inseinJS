@@ -2,23 +2,24 @@ const headerMenu = () => {
    const popupDialogMenu = document.querySelector('.popup-dialog-menu');
    const popupRepairTypes = document.querySelector('.popup-repair-types');
 
-  
+    // функция открытия / закрытия меню 
     const toggleMenu = () => {
         popupDialogMenu.parentElement.classList.toggle('visible')
         popupDialogMenu.classList.toggle('popup-dialog-menu--active');
     }
-
+    // открытие модалки 'Полный список услуг'
     const openPopupRepairTypes = () => {
         popupRepairTypes.classList.add('visible');
 
     }
-
-    const closePopupRepairTypes = () => {
-        popupRepairTypes.classList.remove('visible');
-
+    // функция закрытия всех модалок
+    const closeAllPopup = () => {
+        const popup = document.querySelectorAll('.popup')
+        popup.forEach(item => {
+            item.classList.remove('visible')
+        })
     }
-
-
+  
     document.addEventListener('click', e => {
         e.preventDefault();
         const target = e.target;
@@ -45,17 +46,17 @@ const headerMenu = () => {
             toggleMenu();
             openPopupRepairTypes()
         }
-        
-    });
-    // работа с модалкой popupRepairTypes
-    popupRepairTypes.addEventListener('click', e => {
-        e.preventDefault();
-        const target = e.target;
-        // закрытие модалки
+        // открытие модалки политика конфиденциальности
+        if (target.matches('.link-privacy')) {
+            const popupPrivacy = document.querySelector('.popup-privacy');
+            popupPrivacy.classList.add('visible');
+        }
+        // закрытие всех модалок при нажатии на крестик
         if (target.closest('.close')) {
-            closePopupRepairTypes()
+            closeAllPopup()
         }
     });
+   
 
 
 
