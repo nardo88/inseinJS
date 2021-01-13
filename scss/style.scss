@@ -9597,3 +9597,10 @@ strong {
 .slider-dots {
   display: none;
 }
+
+
+.popup-dialog-menu {
+    &--active{
+      transform:translate3d(0, 0, 0)
+    }
+  }

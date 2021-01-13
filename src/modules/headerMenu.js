@@ -7,7 +7,6 @@ const headerMenu = () => {
         popupDialogMenu.classList.toggle('popup-dialog-menu--active');
     }
 
-
     menuIcon.addEventListener('click', toggleMenu);
 
     popupDialogMenu.addEventListener('click', e => {
