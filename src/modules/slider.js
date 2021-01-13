@@ -11,47 +11,58 @@ class Slider {
             position: 0,
             maxPosition: this.slides.length - this.slidesToShow,
             activeSlide: true,
-            loop: option.loop
-        }
+            loop: option.loop,
+            countSlides: this.slides.length
+        };
+        this.responsive = option.responsive;
+
+        
     }
 
     init() {
-
+      
         this.addStyle();
         this.addGloClass();
-        if (this.options.loop){
+        if (this.options.loop) {
             this.cloneSlides();
         }
+        this.options.maxPosition = this.slides.length - this.slidesToShow;
         this.controlSlider();
+        this.addActiveClass(this.options.position + 1);
 
-        
+        if (this.responsive) {
+            this.responseInit();
+        }
+
+
 
     }
 
     addStyle() {
         let style = document.getElementById('styleCarousel-style');
 
-        if (!style){
+        if (!style) {
             style = document.createElement('style');
             style.id = 'styleCarousel-style';
         }
-        
+
         style.textContent = `
                 .glo-slider{
                     overflow: hidden !important;
                 }
                 .glo-slider__wrap{
                     display: flex !important;
-                    transition: transform 0.5s !important;
                     will-change: transform !important;
-                    min-height: auto !important;
+                    align-items: flex-start;
+                }
+                .glo-slider__wrap--transition{
+                    transition: transform 0.5s !important;
                 }
                 .glo-slider__item{
                     display: flex !important;
                     align-items: center !important;
                     justify-content: center;
                     flex: 0 0 ${ this.options.widthSlides}%;
-                    margin: auto 0 !important;
                 }
                 .glo-slider__prev, .glo-slider__next{
                     margin: 0 10px;
@@ -71,6 +82,10 @@ class Slider {
                     background: transparent !important;
                 }
 
+                .killed{
+                    display : none !important;
+                }
+
                 
                 
                 
@@ -81,11 +96,12 @@ class Slider {
     addGloClass() {
         this.main.classList.add('glo-slider');
         this.wrap.classList.add('glo-slider__wrap');
+        this.wrap.classList.add('glo-slider__wrap--transition');
 
         for (const item of this.slides) {
             item.classList.add('glo-slider__item');
         }
-       
+
     }
 
     controlSlider() {
@@ -97,14 +113,9 @@ class Slider {
         if (this.options.loop || this.options.position > 0) {
             --this.options.position;
 
-            if (this.options.position <= 0) {
-                this.wrap.prepend(this.slides[this.slides.length - 1])
-                this.options.position++
+            if (this.options.position < 0) {
+                this.options.position = this.options.maxPosition;
             }
-
-            
-            console.log('this.options.widthSlides: ', this.options.widthSlides);
-            console.log('this.options.position: ', this.options.position);
             this.wrap.style.transform = `translateX(-${this.options.position * this.options.widthSlides}%)`;
         }
 
@@ -114,29 +125,32 @@ class Slider {
     nextSlider() {
         if (this.options.loop || this.options.position < this.options.maxPosition) {
             ++this.options.position
-            
-            if (this.options.position > this.slides.length - this.slidesToShow) {
+            if (this.options.position > this.options.countSlides - this.slidesToShow) {
                 
-                this.cloneSlides()
-                
+                this.options.position = 0;
             }
 
-            console.log('this.options.widthSlides: ', this.options.widthSlides);
-            console.log('this.options.position: ', this.options.position);
-
             this.wrap.style.transform = `translateX(-${this.options.position * this.options.widthSlides}%)`;
-
         }
 
         this.addActiveClass();
+
     }
 
     addActiveClass() {
-        if (this.options.activeSlide){
+        if (innerWidth  < 768) {
+            [...this.slides].forEach(item => {
+                item.style.opacity = '1';
+                item.children[0].children[0].classList.add('visible-prompt');
+            })
+        } else if (this.options.activeSlide) {
             [...this.slides].forEach((item, i) => {
                 item.style.opacity = '.2'
-                if (i === this.options.position + 1){
+                item.children[0].children[0].classList.remove('visible-prompt')
+                if (i === this.options.position + 1) {
                     item.style.opacity = '1'
+                    item.children[0].children[0].classList.add('visible-prompt')
+
 
                 }
             })
@@ -145,9 +159,53 @@ class Slider {
 
     cloneSlides() {
         const firstClone = this.slides[0].cloneNode(true);
+        firstClone.id = 'firstClone';
         const lastClone = this.slides[this.slides.length - 1].cloneNode(true);
+        lastClone.id = 'lastClone';
         this.wrap.insertAdjacentElement('beforeend', firstClone);
         this.wrap.insertAdjacentElement('afterbegin', lastClone);
+    }
+
+    responseInit() {
+        const slidesToShowDefault = this.slidesToShow;
+        const allResponse = this.responsive.map(item => item.breackpoint);
+        const maxResponse = Math.max(...allResponse);
+
+        const checkResponse = () => {
+            const widthWindow = document.documentElement.clientWidth;
+            if (widthWindow < maxResponse) {
+                for (let i = 0; i < allResponse.length; i++) {
+                    if (widthWindow < allResponse[i]) {
+                        this.slidesToShow = this.responsive[i].slidesToShow;
+                        this.options.widthSlides = Math.floor(100 / this.slidesToShow);
+                        this.addStyle()
+                    }
+                }
+                if (widthWindow < 768){
+                    this.options.countSlides = this.slides.length - 2
+                    document.getElementById('firstClone').classList.add('killed')
+                    document.getElementById('lastClone').classList.add('killed')
+                } else {
+                    this.options.countSlides = this.slides.length
+                    document.getElementById('firstClone').classList.remove('killed')
+                    document.getElementById('lastClone').classList.remove('killed')
+                }
+
+                
+            } else {
+                this.slidesToShow = slidesToShowDefault;
+                this.options.widthSlides = Math.floor(100 / this.slidesToShow);
+                this.addStyle()
+                
+
+            }
+
+            this.addActiveClass();
+        };
+
+        checkResponse();
+
+        window.addEventListener('resize', checkResponse)
     }
 
 }

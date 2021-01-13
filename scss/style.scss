@@ -512,15 +512,16 @@ template,
   -webkit-transition: 0.5s;
   transition: 0.5s;
   opacity: 0;
- 
+
 }
 
-.header-contacts__phone-number-accord--active{
-    top: 30px;
-    & a{
-        opacity: 1;
-    }
+.header-contacts__phone-number-accord--active {
+  top: 30px;
+
+  & a {
+    opacity: 1;
   }
+}
 
 .header-contacts__arrow {
   cursor: pointer;
@@ -535,7 +536,7 @@ template,
   margin-left: 5px;
 }
 
-.header-contacts__arrow--active{
+.header-contacts__arrow--active {
   transform: rotate(180deg);
 }
 
@@ -5408,8 +5409,8 @@ div.wave-block:nth-child(17):after {
   -webkit-transition: 1s;
   transition: 1s;
 
-  &--active{
-    transform:translate3d(0, 0, 0)
+  &--active {
+    transform: translate3d(0, 0, 0)
   }
 }
 
@@ -9600,18 +9601,24 @@ strong {
 
 
 .popup-dialog-menu {
-    &--active{
-      transform:translate3d(0, 0, 0)
-    }
+  &--active {
+    transform: translate3d(0, 0, 0)
   }
-
-.visible{
-    visibility: visible;
-    opacity: 1;
 }
 
-.popup-before{
-    &:before{
-        transform: rotate(180deg);
-    }
+.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.visible-prompt {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+}
+
+.popup-before {
+  &:before {
+    transform: rotate(180deg);
+  }
 }
