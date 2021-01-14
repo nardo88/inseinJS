@@ -5,6 +5,7 @@ import prompts from './modules/prompts';
 import typesOfRepair from './modules/typesOfRepair';
 import portfolio from './modules/portfolio';
 import portfolioModal from './modules/portfolioModal';
+import documents from './modules/documents';
 
 // отображение доп. телефона
 phoneNumbers();
@@ -20,3 +21,5 @@ typesOfRepair();
 portfolio();
 // модалка portfolio
 portfolioModal();
+// документы
+documents();

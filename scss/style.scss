@@ -9623,6 +9623,12 @@ strong {
   }
 }
 
+@media (max-width: 1090px){
+  .transparency-item{
+    display: none;
+  }
+}
+
 @media (max-width: 1024px){
   .nav-list-repair {
     flex-wrap: nowrap;
@@ -9663,4 +9669,9 @@ strong {
   #portfolio-arrow-mobile_right, #portfolio-arrow-mobile_left{
     z-index: 100;
   }
+}
+
+
+.active-doc{
+  display: flex;
 }

@@ -61,6 +61,10 @@ class sliderForRepair {
     showCurentSlide(i) {
         this.current.textContent = i
     }
+
+    destroy() {
+        
+    }
    
 }
 
