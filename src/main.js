@@ -8,6 +8,7 @@ import portfolioModal from './modules/portfolioModal';
 import documents from './modules/documents';
 import documentPopup from './modules/documentPopup';
 import acardeon from './modules/acardeon';
+import problems from './modules/problems';
 
 // отображение доп. телефона
 phoneNumbers();
@@ -29,3 +30,5 @@ documents();
 documentPopup();
 //акардеон
 acardeon();
+// блок с проблемами
+problems();

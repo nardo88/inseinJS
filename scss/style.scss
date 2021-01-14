@@ -3154,12 +3154,12 @@ div.wave-block:nth-child(17):after {
 .problems-item-popup-1 {
   min-height: 344px;
   padding-top: 35px;
-  top: 245px;
+  // top: 245px;
 }
 
 @media (min-width: 1025px) {
   .problems-item-popup-1 {
-    top: 140px;
+    // top: 140px;
   }
 }
 
@@ -3178,8 +3178,8 @@ div.wave-block:nth-child(17):after {
   content: '';
   background: url("../images/problems/popup_bg_1.svg") no-repeat;
   background-size: contain;
-  -webkit-transform: rotate(180deg);
-  transform: rotate(180deg);
+  // -webkit-transform: rotate(180deg);
+  // transform: rotate(180deg);
   z-index: -1;
 }
 
@@ -9623,24 +9623,26 @@ strong {
   }
 }
 
-@media (max-width: 1090px){
-  .transparency-item{
+@media (max-width: 1090px) {
+  .transparency-item {
     display: none;
   }
 }
 
-@media (max-width: 1024px){
+@media (max-width: 1024px) {
   .nav-list-repair {
     flex-wrap: nowrap;
-    
+
   }
-  .nav-list-repair{
+
+  .nav-list-repair {
     min-width: auto !important;
   }
 
-  .repair-types-nav__item{
+  .repair-types-nav__item {
     position: relative;
-    svg{
+
+    svg {
       position: absolute;
       top: 0;
       left: 50%;
@@ -9649,32 +9651,55 @@ strong {
   }
 }
 
-.transition{
+.transition {
   transition: 0.5s !important;
 }
 
 
-@media (max-width: 900px){
-  .portfolio-slider__slide{
+@media (max-width: 900px) {
+  .portfolio-slider__slide {
     min-width: 100%;
   }
 
 }
 
-@media (max-width: 575px){
-  .slider-arrow_right-portfolio, .slider-arrow_left-portfolio{
+@media (max-width: 575px) {
+
+  .slider-arrow_right-portfolio,
+  .slider-arrow_left-portfolio {
     visibility: hidden;
   }
 
-  #portfolio-arrow-mobile_right, #portfolio-arrow-mobile_left{
+  #portfolio-arrow-mobile_right,
+  #portfolio-arrow-mobile_left {
     z-index: 100;
   }
 }
 
-.popup-transparency-slider__slide{
+.popup-transparency-slider__slide {
   display: none;
 }
 
-.active-doc{
+.active-doc {
   display: flex;
+}
+
+
+// ==============slider problems
+.carousel-wrapper{
+  max-width: 500px;
+  overflow-x: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-x: hidden;
+}
+.carousel-slider {
+  display: flex;
+  transition: .5s;
+}
+
+@media (max-width: 575px){
+  .carousel-wrapper{
+    max-width: 100%;
+  }
 }
