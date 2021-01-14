@@ -7,6 +7,7 @@ import portfolio from './modules/portfolio';
 import portfolioModal from './modules/portfolioModal';
 import documents from './modules/documents';
 import documentPopup from './modules/documentPopup';
+import acardeon from './modules/acardeon';
 
 // отображение доп. телефона
 phoneNumbers();
@@ -26,3 +27,5 @@ portfolioModal();
 documents();
 // popup documents 
 documentPopup();
+//акардеон
+acardeon();
