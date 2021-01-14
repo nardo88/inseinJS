@@ -46,6 +46,7 @@ const prompts = () => {
         prev: '#formula-arrow_left',
         next: '#formula-arrow_right',
         loop: true,
+        activeSlide: true,
 
         responsive: [{
                 breackpoint: 1024,

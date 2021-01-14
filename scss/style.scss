@@ -9622,3 +9622,23 @@ strong {
     transform: rotate(180deg);
   }
 }
+
+@media (max-width: 1024px){
+  .nav-list-repair {
+    flex-wrap: nowrap;
+    
+  }
+  .nav-list-repair{
+    min-width: auto !important;
+  }
+
+  .repair-types-nav__item{
+    position: relative;
+    svg{
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}

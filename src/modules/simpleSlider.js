@@ -1,4 +1,4 @@
-class Slider {
+class simpleSlider {
     constructor(option) {
         this.main = document.querySelector(option.main);
         this.wrap = document.querySelector(option.wrapp);
@@ -23,7 +23,7 @@ class Slider {
     init() {
       
         this.addStyle();
-        this.addGloClass();
+        this.addsimpleClass();
         if (this.options.loop) {
             this.cloneSlides();
         }
@@ -36,74 +36,63 @@ class Slider {
         if (this.responsive) {
             this.responseInit();
         }
-
-
-
-
     }
 
     addStyle() {
-        let style = document.getElementById('styleCarousel-style');
+        let style = document.getElementById('simpleSlider-style');
 
         if (!style) {
             style = document.createElement('style');
-            style.id = 'styleCarousel-style';
+            style.id = 'simpleSlider-style';
         }
 
         style.textContent = `
-                .glo-slider{
+                .simple-slider{
                     overflow: hidden !important;
                 }
-                .glo-slider__wrap{
+                .simple-slider__wrap{
                     display: flex !important;
                     will-change: transform !important;
                     align-items: flex-start;
                 }
-                .glo-slider__wrap--transition{
+                .simple-slider__wrap--transition{
                     transition: transform 0.5s !important;
                 }
-                .glo-slider__item{
+                .simple-slider__item{
                     display: flex !important;
                     align-items: center !important;
                     justify-content: center !important;
                     flex: 0 0 ${ this.options.widthSlides }% !important;
                 }
-                .glo-slider__prev, .glo-slider__next{
+                .simple-slider__prev, .simple-slider__next{
                     margin: 0 10px;
                     border: 20px solid transparent;
                     background: transparent;
                     cursor: pointer;
                     outline: none;
                 }
-                .glo-slider__prev{
+                .simple-slider__prev{
                     border-right-color: #19b5fe;
                 }
-                .glo-slider__next{
+                .simple-slider__next{
                     border-left-color: #19b5fe;
                 }
-                .glo-slider__prev,
-                .glo-slider__next:hover{
+                .simple-slider__prev,
+                .simple-slider__next:hover{
                     background: transparent !important;
                 }
 
-                .killed{
-                    display : none !important;
-                }
-
-                
-                
-                
             `;
         document.head.appendChild(style);
     }
 
-    addGloClass() {
-        this.main.classList.add('glo-slider');
-        this.wrap.classList.add('glo-slider__wrap');
-        this.wrap.classList.add('glo-slider__wrap--transition');
+    addsimpleClass() {
+        this.main.classList.add('simple-slider');
+        this.wrap.classList.add('simple-slider__wrap');
+        this.wrap.classList.add('simple-slider__wrap--transition');
 
         for (const item of this.slides) {
-            item.classList.add('glo-slider__item');
+            item.classList.add('simple-slider__item');
         }
 
     }
@@ -114,40 +103,25 @@ class Slider {
     }
 
     prevSlider() {
-        if (this.options.loop || this.options.position > 0) {
+        if (this.options.infinity || this.options.position > 0) {
             --this.options.position;
-
             if (this.options.position < 0) {
                 this.options.position = this.options.maxPosition;
             }
             this.wrap.style.transform = `translateX(-${this.options.position * this.options.widthSlides}%)`;
         }
-        if (this.options.activeSlide){
-
-            this.addActiveClass();
-        }
     }
-
+    // показать следующий слайдер
     nextSlider() {
-        if (!this.options.loop){
-            if (this.options.position < this.slides[0].parentElement.offsetWidth - this.options.widthSlides * 3) {
-                ++this.options.position
-            } 
-            
-            this.wrap.style.transform = `translateX(-${this.options.position * this.options.widthSlides}%)`;
-
-        } else if (this.options.loop || this.options.position < this.options.maxPosition) {
+        if (this.options.infinity || this.options.position < this.options.maxPosition) {
             ++this.options.position
-            if (this.options.position > this.options.countSlides - this.slidesToShow) {
-                
+            if (this.options.position > this.slides.length - this.slidesToShow) {
                 this.options.position = 0;
             }
 
             this.wrap.style.transform = `translateX(-${this.options.position * this.options.widthSlides}%)`;
+
         }
-
-        this.addActiveClass();
-
     }
 
     addActiveClass() {
@@ -221,7 +195,19 @@ class Slider {
         window.addEventListener('resize', checkResponse)
     }
 
+    destroy(){
+        this.main.classList.remove('simple-slider');
+        this.wrap.classList.remove('simple-slider__wrap');
+        this.wrap.classList.remove('simple-slider__wrap--transition');
+
+        for (const item of this.slides) {
+            item.classList.remove('simple-slider__item');
+        }
+
+        this.wrap.style.transform = `none`;
+    }
+
+
 }
 
-
-export default Slider
+export default simpleSlider
