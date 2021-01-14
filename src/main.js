@@ -4,6 +4,7 @@ import maskForPhones from './modules/maskForPhones';
 import prompts from './modules/prompts';
 import typesOfRepair from './modules/typesOfRepair';
 import portfolio from './modules/portfolio';
+import portfolioModal from './modules/portfolioModal';
 
 // отображение доп. телефона
 phoneNumbers();
@@ -14,6 +15,8 @@ maskForPhones();
 // отображение подсказок при наведении на кружки с цифрами
 prompts();
 // виды ремонта
-typesOfRepair()
+typesOfRepair();
 // портфолио
-portfolio()
+portfolio();
+// модалка portfolio
+portfolioModal();

@@ -2,6 +2,9 @@ import sliderForRepair from './sliderForRepair'
 
 const portfolio = () => {
 
+    const portfolioSliderWrap = document.querySelector('.portfolio-slider-wrap');
+    const popupPortfolio = document.querySelector('.popup-portfolio');
+
     class PortfolioDesctop {
         constructor({
             slides,
@@ -88,9 +91,6 @@ const portfolio = () => {
     }
 
 
-
-
-
     const desctopSlider = new PortfolioDesctop({
         slides: '.portfolio-slider__slide',
         next: '#portfolio-arrow_right',
@@ -111,6 +111,18 @@ const portfolio = () => {
     })
 
     mobileSlider.init();
+
+    const showModalPortfolio = () => {
+        popupPortfolio.classList.add('visible')
+    }
+
+    portfolioSliderWrap.addEventListener('click', e => {
+        const target = e.target
+
+        if (target.classList.contains('portfolio-slider__slide-frame')){
+            showModalPortfolio()
+        }
+    })
 }
 
 export default portfolio
