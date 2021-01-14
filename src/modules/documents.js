@@ -1,20 +1,28 @@
-export class easySlider {
+export class EasySlider {
     constructor({
         wrap,
         next,
         prev,
         activeClass = 'active',
+        counter,
+        total
+
     }){
         this.wrap = document.querySelector(wrap);
         this.slides = this.wrap.children;
         this.next = document.querySelector(next)
         this.prev = document.querySelector(prev)
         this.count = 0;
-        this.activeClass = activeClass
+        this.activeClass = activeClass;
+        this.counter = document.querySelector(counter);
+        this.total = document.querySelector(total);
+
     }
 
     init() {
+
         this.addListener();
+        this.showCount();
     }
 
     showSlide() {
@@ -26,6 +34,17 @@ export class easySlider {
 
             }
         })
+
+        this.showCount();
+    }
+
+    showCount() {
+        if (this.counter && this.total){
+            this.counter.textContent = this.count + 1;
+            this.total.textContent =  this.slides.length;
+        }
+        
+
     }
 
     nextSlide() {
@@ -56,7 +75,7 @@ export class easySlider {
 
 const documents = () => {
 
-    const slider = new easySlider({
+    const slider = new EasySlider({
         wrap: '.transparency-slider',
         next: '#transparency-arrow_right',
         prev: '#transparency-arrow_left',
