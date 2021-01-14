@@ -3,6 +3,7 @@ import popups from './modules/popups';
 import maskForPhones from './modules/maskForPhones';
 import prompts from './modules/prompts';
 import typesOfRepair from './modules/typesOfRepair';
+import portfolio from './modules/portfolio';
 
 // отображение доп. телефона
 phoneNumbers();
@@ -14,3 +15,5 @@ maskForPhones();
 prompts();
 // виды ремонта
 typesOfRepair()
+// портфолио
+portfolio()

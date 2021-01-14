@@ -20,7 +20,6 @@ class sliderForRepair {
 
 
     init() {
-        
         this.addListener();
         this.showCurentSlide(1) 
         this.total.textContent = this.maxSlides

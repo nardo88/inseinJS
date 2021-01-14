@@ -9642,3 +9642,25 @@ strong {
     }
   }
 }
+
+.transition{
+  transition: 0.5s !important;
+}
+
+
+@media (max-width: 900px){
+  .portfolio-slider__slide{
+    min-width: 100%;
+  }
+
+}
+
+@media (max-width: 575px){
+  .slider-arrow_right-portfolio, .slider-arrow_left-portfolio{
+    visibility: hidden;
+  }
+
+  #portfolio-arrow-mobile_right, #portfolio-arrow-mobile_left{
+    z-index: 100;
+  }
+}
