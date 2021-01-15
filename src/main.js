@@ -12,6 +12,7 @@ import documentPopup from './modules/documentPopup';
 import acardeon from './modules/acardeon';
 import problems from './modules/problems';
 import designSolutions from './modules/designSolutions';
+import consultation from './modules/consultation';
 
 // отображение доп. телефона
 phoneNumbers();
@@ -37,3 +38,5 @@ acardeon();
 problems();
 // блок с дизайнерскими решениями
 designSolutions();
+// popupt с консультацией
+consultation();
