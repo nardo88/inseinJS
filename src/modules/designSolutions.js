@@ -14,15 +14,24 @@ const designSolutions = () => {
     // счетчики
     const sliderCurrent = document.getElementById('slider-counter-responsive-current');
     const sliderTotal = document.getElementById('slider-counter-responsive-total');
+    const popup = document.querySelector('.popup-design');
+
+    // ЭЛЕМЕНТЫ POPUP====================================================================
+    // кнопки в popup
+    const designsNavItemPopup = document.querySelectorAll('.designs-nav__item_popup');
+    // слайдеры в popup
+    const popupDesignsSliderItem = document.querySelectorAll('.popup-designs-slider__item');
 
 
+
+
+    // функция для заполнения счетчиков
     const setDefaultCounter = (total, current = 1) => {
         sliderTotal.textContent = total;
         sliderCurrent.textContent = current;
     }
 
-    // designs-slider-item--active
-
+    // добавление активного класса
     const addActive = (arr, i, className) => {
         arr.forEach((item, ind) => {
             item.classList.remove(className)
@@ -32,9 +41,17 @@ const designSolutions = () => {
         })
     }
 
-    const showSliderItem = i => {
+
+    const showSliderItem = (i = 0) => {
         const slider = document.querySelector('.designs-slider-item--active').children;
         addActive([...slider], i, 'designs-slide-active');
+    }
+
+    // показать первый слайд в popup
+    const showSliderItemPopup = (i = 0) => {
+        const slider = document.querySelector('.popup-designs-slider__item--active').children;
+        addActive([...slider], i, 'designs-slide-active');
+
     }
 
     // сброс активного класса для превью во время переключения между слайдерами
@@ -49,27 +66,63 @@ const designSolutions = () => {
         })
     }
 
+    // переключение табов
+    const tabChange = ( callBack, target, buttons, ActiveClass, sliders, activeClassForSliders, previews, activeClassPreview, ) => {
+        // перебираем все кнопки
+        buttons.forEach((item, i) => {
+            // удаляем у всех кнопок активный класс
+            item.classList.remove(ActiveClass);
+            
+            if (target === item) {
+                indexActivePreview = i;
+                // добавляем активный класс
+                item.classList.add(ActiveClass);
+                // включаем слайдер
+                if (sliders){
+                    addActive(sliders, i, activeClassForSliders)
+                }
+
+                //включаем превью
+                if (previews){
+                    addActive(previews, i, activeClassPreview)
+                }
+                // показываем первый слайдер
+                callBack();
+                // сбрасываем превьюшки что бы первая была активна
+                if (previews){
+                    defaultActiveClassForPreview();
+                }
+                
+                // заполняем счетчики
+                setDefaultCounter(sliders[i].children.length)
+            }
+        })
+    }
+
+    // обработка модального окна============================================POPUP==============================================================
+    popup.addEventListener('click', e => {
+        const target = e.target;
+        
+
+        if (target.tagName === 'BUTTON') {
+
+            tabChange(showSliderItemPopup, target, designsNavItemPopup, 'active', popupDesignsSliderItem, 'popup-designs-slider__item--active')
+            
+        }
+    })
+
+
+    // переменная для синхронизации счетчика и пагинации
     let indexActivePreview = 0;
 
     designs.addEventListener('click', e => {
         const target = e.target;
         // клики по кнопке
         if (target.tagName === 'BUTTON') {
-            designsNavItem.forEach((item, i) => {
-                
-                item.classList.remove('active');
-                if (target === item) {
-                    indexActivePreview = i;
-                    item.classList.add('active');
-                    addActive(designsSliderItem, i, 'designs-slider-item--active')
-                    addActive(previewBlock, i, 'visible')
-                    showSliderItem(0);
-                    defaultActiveClassForPreview();
-                    setDefaultCounter(designsSliderItem[i].children.length)
-                }
-            })
-        }
 
+            tabChange(showSliderItem, target, designsNavItem, 'active', designsSliderItem, 'designs-slider-item--active', previewBlock, 'visible', )
+            
+        }
 
         if (target.closest('.preview-block__item')) {
             const previewItems = target.parentElement.parentElement.children;
@@ -87,10 +140,6 @@ const designSolutions = () => {
                     item.children[0].classList.add('preview_active');
                 }
             })
-
-
-
-            
         }
 
         if (target.closest('.slider-arrow-tablet-mobile_right')){
@@ -122,10 +171,7 @@ const designSolutions = () => {
                 }
             })
 
-
             setDefaultCounter(arraySlides.length, count + 1)
-
-
 
         }
 
@@ -159,8 +205,12 @@ const designSolutions = () => {
             })
 
             setDefaultCounter(arraySlides.length, count + 1)
+        }
 
 
+        // открытие модального окна
+        if (target.matches('.link-list-designs a') ){
+            popup.classList.add('visible');
         }
     })
     // включаем первый слайдер и превью
@@ -194,6 +244,11 @@ const designSolutions = () => {
     })
 
     includeSlider()
+
+
+
+    
+
 
     
     

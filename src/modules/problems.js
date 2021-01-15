@@ -108,6 +108,7 @@ export class Carousel {
                 item.classList.remove(this.classForSlide)
             })
         }
+        this.slider.style.transform = 'none';
 
        
         

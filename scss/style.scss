@@ -7050,6 +7050,7 @@ div.wave-block:nth-child(17):after {
   margin-top: 0;
   border-radius: 0 20px 0 0;
   overflow: hidden;
+  height: 100%;
 }
 
 @media (max-width: 1024px) {
@@ -9784,4 +9785,45 @@ strong {
   .slider-counter-responsive{
     z-index: 1000;
   }
+}
+
+
+.link-list-designs a{
+  color: #000;
+}
+
+
+// POPUP===============================================================
+
+.popup-designs-slider__item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 100%;
+  opacity: 0;
+  -webkit-transition: opacity .5s;
+  transition: opacity .5s;
+  height: 100%;
+
+
+}
+
+.popup-design-slider__style-slide {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 100%;
+  opacity: 0;
+  -webkit-transition: opacity .5s;
+  transition: opacity .5s;
+}
+
+
+.popup-designs-slider__item--active{
+  opacity: 1;
+  z-index: 500;
 }
