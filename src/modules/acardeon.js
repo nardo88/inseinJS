@@ -5,11 +5,8 @@ const acardeon = () => {
     const showElem = (target) => {
         titles.forEach((item) => {
             item.classList.remove('msg-active');
-            // item.nextElementSibling.style.height = '0'
             if (item === target){
                 item.classList.add('msg-active');
-                // item.nextElementSibling.style.height = '500px'
-
             }
         })
     }

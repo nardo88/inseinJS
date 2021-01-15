@@ -1,3 +1,5 @@
+'use strict'
+
 import phoneNumbers from './modules/phoneNumbers';
 import popups from './modules/popups';
 import maskForPhones from './modules/maskForPhones';
@@ -9,6 +11,7 @@ import documents from './modules/documents';
 import documentPopup from './modules/documentPopup';
 import acardeon from './modules/acardeon';
 import problems from './modules/problems';
+import designSolutions from './modules/designSolutions';
 
 // отображение доп. телефона
 phoneNumbers();
@@ -32,3 +35,5 @@ documentPopup();
 acardeon();
 // блок с проблемами
 problems();
+// блок с дизайнерскими решениями
+designSolutions();

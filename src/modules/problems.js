@@ -10,6 +10,7 @@ export class Carousel {
         activClass,
         classForSlider,
         classForWrapper,
+        classForSlide,
         slidesToShow,
         prev,
         next,
@@ -20,6 +21,7 @@ export class Carousel {
         this.activClass = activClass;
         this.classForSlider = classForSlider;
         this.classForWrapper = classForWrapper;
+        this.classForSlide = classForSlide;
         this.slidesToShow = slidesToShow;
         this.widthSlides = Math.floor(100 / this.slidesToShow);
         this.prev = document.querySelector(prev);
@@ -37,21 +39,37 @@ export class Carousel {
     addClass() {
         this.slider.classList.add(this.classForSlider);
         this.wrap.classList.add(this.classForWrapper);
+        if (this.classForSlide){
+            [...this.slides].forEach(item => {
+                item.classList.add(this.classForSlide)
+            })
+        }
+        
     }
 
     addStyles() {
-        [...this.slides].forEach(item => {
-            item.style.maxWidth = `${this.widthSlides}%`;
-            item.style.display = `flex`;
-            item.style.flex = `0 0 ${this.widthSlides}%`
-        })
+
+        if (!this.classForSlide){
+            [...this.slides].forEach(item => {
+                item.style.maxWidth = `${this.widthSlides}%`;
+                item.style.display = `flex`;
+                item.style.flex = `0 0 ${this.widthSlides}%`
+            })
+        }
+            
+        
     }
     nextSlide() {
-        ++this.currentSlide;
-        if (this.currentSlide > this.slides.length - 1){
-            this.currentSlide = 0;
-        } 
-        this.move();
+        if (this.all){
+            console.log(true);
+        } else {
+            ++this.currentSlide;
+            if (this.currentSlide > this.slides.length - 1){
+                this.currentSlide = 0;
+            } 
+            this.move();
+        }
+        
     }
 
     prevSlide() {
@@ -79,6 +97,20 @@ export class Carousel {
     move() {
         this.slider.style.transform = `translateX(-${this.widthSlides * this.currentSlide }%)`;
         this.addActiveClass();
+    }
+
+    destroy() {
+
+        this.slider.classList.remove(this.classForSlider);
+        this.wrap.classList.remove(this.classForWrapper);
+        if (this.classForSlide){
+            [...this.slides].forEach(item => {
+                item.classList.remove(this.classForSlide)
+            })
+        }
+
+       
+        
     }
 }
 
@@ -108,6 +140,7 @@ const problems = () => {
         activClass: 'active-item',
         classForSlider: 'carousel-slider',
         classForWrapper: 'carousel-wrapper',
+        classForSlide: '',
         slidesToShow: 1,
         prev: '#problems-arrow_left',
         next: '#problems-arrow_right',
