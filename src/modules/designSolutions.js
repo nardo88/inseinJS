@@ -1,3 +1,6 @@
+// Табы со слайдерами и popup с тем же контентом
+
+
 'use strict'
 import { Carousel } from './problems';
 
@@ -21,7 +24,11 @@ const designSolutions = () => {
     const designsNavItemPopup = document.querySelectorAll('.designs-nav__item_popup');
     // слайдеры в popup
     const popupDesignsSliderItem = document.querySelectorAll('.popup-designs-slider__item');
-
+    // текст для слайдеров
+    const popupDesignText = document.querySelectorAll('.popup-design-text');
+    // счетчик в popup current / total
+    const popupDesignsCounterCurrent = document.getElementById('popup-designs-counter-current');
+    const popupDesignsCounterTotal = document.getElementById('popup-designs-counter-total');
 
 
 
@@ -29,6 +36,11 @@ const designSolutions = () => {
     const setDefaultCounter = (total, current = 1) => {
         sliderTotal.textContent = total;
         sliderCurrent.textContent = current;
+    }
+    // функция для заполнения счетчика в popup
+    const setDefaultCounterPopup = (total, current = 1) => {
+        popupDesignsCounterCurrent.textContent = current;
+        popupDesignsCounterTotal.textContent = total;
     }
 
     // добавление активного класса
@@ -51,6 +63,7 @@ const designSolutions = () => {
     const showSliderItemPopup = (i = 0) => {
         const slider = document.querySelector('.popup-designs-slider__item--active').children;
         addActive([...slider], i, 'designs-slide-active');
+        setDefaultCounterPopup(slider.length)
 
     }
 
@@ -66,8 +79,10 @@ const designSolutions = () => {
         })
     }
 
+    
+
     // переключение табов
-    const tabChange = ( callBack, target, buttons, ActiveClass, sliders, activeClassForSliders, previews, activeClassPreview, ) => {
+    const tabChange = ( callBack, target, buttons, ActiveClass, sliders, activeClassForSliders, previews, activeClassPreview, objForText) => {
         // перебираем все кнопки
         buttons.forEach((item, i) => {
             // удаляем у всех кнопок активный класс
@@ -95,6 +110,12 @@ const designSolutions = () => {
                 
                 // заполняем счетчики
                 setDefaultCounter(sliders[i].children.length)
+                setDefaultCounterPopup(sliders[i].children.length)
+
+                // обработка блоков с текстом
+                if (objForText){
+                    addActive(objForText.popupDesignText, i, 'visible-content-block');
+                }
             }
         })
     }
@@ -106,8 +127,64 @@ const designSolutions = () => {
 
         if (target.tagName === 'BUTTON') {
 
-            tabChange(showSliderItemPopup, target, designsNavItemPopup, 'active', popupDesignsSliderItem, 'popup-designs-slider__item--active')
+            tabChange(showSliderItemPopup, target, designsNavItemPopup, 'active', popupDesignsSliderItem, 'popup-designs-slider__item--active', null, null, {
+                popupDesignText,
+                active: 'visible-content-block'
+            })
             
+            
+        }
+
+        if(target.closest('.popup-arrow_right')){
+            const arraySlides = popup.querySelector('.popup-designs-slider__item--active').children;
+            let count;
+            // получаем счетчик
+            [...arraySlides].forEach((item, i) => {
+                if (item.classList.contains('designs-slide-active')){
+                    count = i;
+                }
+            })
+            // увеличиваем счетчик
+            ++count;
+            if (count > arraySlides.length - 1){
+                count = 0;
+            };
+
+            [...arraySlides].forEach((item, i) => {
+                item.classList.remove('designs-slide-active')
+                if (i === count){
+                    item.classList.add('designs-slide-active')
+
+                }
+            });
+            setDefaultCounterPopup(arraySlides.length, count + 1)
+
+        }
+
+        if(target.closest('.popup-arrow_left')){
+            const arraySlides = popup.querySelector('.popup-designs-slider__item--active').children;
+            let count;
+            // получаем счетчик
+            [...arraySlides].forEach((item, i) => {
+                if (item.classList.contains('designs-slide-active')){
+                    count = i;
+                }
+            })
+            // увеличиваем счетчик
+            --count;
+            if (count < 0 ){
+                count = arraySlides.length - 1;
+            };
+
+            [...arraySlides].forEach((item, i) => {
+                item.classList.remove('designs-slide-active')
+                if (i === count){
+                    item.classList.add('designs-slide-active')
+
+                }
+            });
+            setDefaultCounterPopup(arraySlides.length, count + 1)
+
         }
     })
 
@@ -211,6 +288,9 @@ const designSolutions = () => {
         // открытие модального окна
         if (target.matches('.link-list-designs a') ){
             popup.classList.add('visible');
+            addActive(popupDesignsSliderItem, 0, 'popup-designs-slider__item--active')
+            showSliderItemPopup(0);
+            
         }
     })
     // включаем первый слайдер и превью
@@ -239,11 +319,38 @@ const designSolutions = () => {
             carousel.destroy()
         }
     }
+
+    const includSliderPopup = () => {
+        let carousel = new Carousel({
+            wrap: '#nav-designs-popup',
+            slider: '#nav-list-popup-designs',
+            activClass: 'test',
+            classForSlider: 'carousel-slider',
+            classForWrapper: 'designs-slider-wrapper',
+            classForSlide: 'designs-slider-button',
+            slidesToShow: 1,
+            prev: '#nav-arrow-popup-designs_left',
+            next: '#nav-arrow-popup-designs_right',
+        })
+        if (innerWidth < 1135){
+            
+        
+            carousel.init()
+        } else {
+            carousel.destroy()
+        }
+
+    }
+
+
     window.addEventListener('resize', () => {
-        includeSlider()
+        includeSlider();
+        includSliderPopup();
     })
 
-    includeSlider()
+    includeSlider();
+    includSliderPopup();
+
 
 
 

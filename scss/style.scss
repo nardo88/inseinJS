@@ -9826,4 +9826,20 @@ strong {
 .popup-designs-slider__item--active{
   opacity: 1;
   z-index: 500;
+
 }
+
+.popup-arrow, .slider-counter{
+  z-index: 500;
+}
+
+#nav-arrow-popup-designs_left{
+  left: 20px;
+  z-index: 200;
+}
+#nav-arrow-popup-designs_right{
+  right: 20px;
+  z-index: 200;
+}
+
+
