@@ -14,6 +14,7 @@ import problems from './modules/problems';
 import designSolutions from './modules/designSolutions';
 import consultation from './modules/consultation';
 import reviews from './modules/reviews';
+import howWeWork from './modules/howWeWork';
 
 // отображение доп. телефона
 phoneNumbers();
@@ -43,3 +44,5 @@ designSolutions();
 consultation();
 // слайдер с отзывами
 reviews();
+// блок как мы работаем (табы)
+howWeWork();

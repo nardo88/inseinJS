@@ -4588,6 +4588,7 @@ div.wave-block:nth-child(17):after {
   background: #C4C4C4;
   border-radius: 20px;
   overflow: hidden;
+  position: relative;
 }
 
 @media (max-width: 1024px) {
@@ -4604,11 +4605,23 @@ div.wave-block:nth-child(17):after {
 
 .scheme-slider-wrap {
   position: relative;
+
 }
 
 .scheme-slider__slide {
-  position: relative;
   overflow: hidden;
+  transition: .3s;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+.scheme-slider__slide---active{
+  opacity: 1;
 }
 
 @media (max-width: 575px) {
@@ -7805,7 +7818,7 @@ div.wave-block:nth-child(17):after {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  min-width: 1076px;
+  min-width: auto;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
