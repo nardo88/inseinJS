@@ -13,6 +13,7 @@ import acardeon from './modules/acardeon';
 import problems from './modules/problems';
 import designSolutions from './modules/designSolutions';
 import consultation from './modules/consultation';
+import reviews from './modules/reviews';
 
 // отображение доп. телефона
 phoneNumbers();
@@ -40,3 +41,5 @@ problems();
 designSolutions();
 // popupt с консультацией
 consultation();
+// слайдер с отзывами
+reviews();
