@@ -15,6 +15,7 @@ import designSolutions from './modules/designSolutions';
 import consultation from './modules/consultation';
 import reviews from './modules/reviews';
 import howWeWork from './modules/howWeWork';
+import ourPartners from './modules/ourPartners';
 
 // отображение доп. телефона
 phoneNumbers();
@@ -46,3 +47,5 @@ consultation();
 reviews();
 // блок как мы работаем (табы)
 howWeWork();
+// карусель с партнерами
+ourPartners();
