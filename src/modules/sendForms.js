@@ -1,3 +1,5 @@
+import { closeAllPopup } from './popups'
+
 class Validate {
     constructor({
         selector
@@ -131,10 +133,13 @@ const sendForms = () => {
                         throw new Error('Что то пошло не так')
                     }
                     clearInput(form);
-                    openModal('Спасибо за обращение!', 'Ожидайте звонка нашего специалиста. Будем рады помогать Вам!')
+                    openModal('Спасибо за обращение!', 'Ожидайте звонка нашего специалиста. Будем рады помогать Вам!');
+                    closeModal();
                 })
                 .catch(error => {
                     openModal('Сообщение не отправлено!', '')
+                    closeModal();
+
                     console.log(error);
                 });
         
@@ -179,6 +184,10 @@ const sendForms = () => {
          
         }
     })
+
+    const closeModal = () => {
+        setTimeout(closeAllPopup, 3000)
+    }
 
 
     // ------------------------------------модальное окно после отправки

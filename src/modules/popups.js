@@ -1,3 +1,11 @@
+// функция закрытия всех модалок
+export const closeAllPopup = () => {
+    const popup = document.querySelectorAll('.popup')
+    popup.forEach(item => {
+        item.classList.remove('visible')
+    })
+}
+
 const headerMenu = () => {
    const popupDialogMenu = document.querySelector('.popup-dialog-menu');
    const popupRepairTypes = document.querySelector('.popup-repair-types');
@@ -12,13 +20,7 @@ const headerMenu = () => {
         popupRepairTypes.classList.add('visible');
 
     }
-    // функция закрытия всех модалок
-    const closeAllPopup = () => {
-        const popup = document.querySelectorAll('.popup')
-        popup.forEach(item => {
-            item.classList.remove('visible')
-        })
-    }
+    
   
     document.addEventListener('click', e => {
         
