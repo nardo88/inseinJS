@@ -55,7 +55,7 @@ class Validate {
     }
 
     checkName(item) {
-        if (item.value && item.value.trim()) {
+        if (/^[а-яА-Я\s]+$/gi.test(item.value)) {
             this.showSuccess(item);
         } else {
             this.showError(item);
