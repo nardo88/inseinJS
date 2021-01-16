@@ -9,7 +9,7 @@ const designSolutions = () => {
     // область
     const designs = document.getElementById('designs');
     // кнопки
-    const designsNavItem = document.querySelectorAll('.designs-nav__item');
+    const designsNavItem = document.querySelectorAll('.designs-nav__item_base');
     // слайдеры
     const designsSliderItem = document.querySelectorAll('.designs-slider-item');
     // блоки с превью
