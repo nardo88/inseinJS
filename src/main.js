@@ -16,6 +16,7 @@ import consultation from './modules/consultation';
 import reviews from './modules/reviews';
 import howWeWork from './modules/howWeWork';
 import ourPartners from './modules/ourPartners';
+import sendForms from './modules/sendForms';
 
 // отображение доп. телефона
 phoneNumbers();
@@ -49,3 +50,5 @@ reviews();
 howWeWork();
 // карусель с партнерами
 ourPartners();
+// отправка форм
+sendForms();

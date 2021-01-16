@@ -5102,6 +5102,8 @@ div.wave-block:nth-child(17):after {
   .partners-slider__slide {
     // max-width: 134px;
     min-height: auto;
+
+    
   }
 
   .partners-slider__slide svg {
@@ -9858,6 +9860,14 @@ strong {
 
 #partners-wrapper{
   overflow: hidden;
+}
+
+._error{
+  background: rgb(241, 157, 157) !important;
+}
+
+._error-checkbox{
+  color: red !important;
 }
 
 

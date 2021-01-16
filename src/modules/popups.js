@@ -21,7 +21,7 @@ const headerMenu = () => {
     }
   
     document.addEventListener('click', e => {
-        e.preventDefault();
+        
         const target = e.target;
         // закрываем меню
         if (target.closest('.close-menu')) {
@@ -33,12 +33,14 @@ const headerMenu = () => {
         }
         // скролл до нужной позиции
         if (target.closest('.popup-menu-nav__item')){
+            e.preventDefault();
             const scrollHeight = document.getElementById(target.href.split('#')[1]).offsetTop;
             toggleMenu();
             window.scrollTo({top: scrollHeight, behavior: 'smooth'});
         }
         // go to top
         if (target.closest('.button-footer')) {
+            e.preventDefault();
             window.scrollTo({top: 0, behavior: 'smooth'});
         }
         // открытие модалки по клику виды ремонта
@@ -47,6 +49,7 @@ const headerMenu = () => {
         }
         // открытие модалки по клику в меню
         if (target.parentElement.matches('.link-list-menu')) {
+            e.preventDefault();
             toggleMenu();
             openPopupRepairTypes()
         }
