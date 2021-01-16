@@ -87,6 +87,8 @@ const portfolio = () => {
                 this.count = 0;
 
                 this.showHideArrow();
+
+                this.step = this.slides[0].offsetWidth;
                 
             })
         }
