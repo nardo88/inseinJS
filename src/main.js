@@ -17,6 +17,7 @@ import reviews from './modules/reviews';
 import howWeWork from './modules/howWeWork';
 import ourPartners from './modules/ourPartners';
 import sendForms from './modules/sendForms';
+import serviceList from './modules/serviceList';
 
 // отображение доп. телефона
 phoneNumbers();
@@ -52,3 +53,5 @@ howWeWork();
 ourPartners();
 // отправка форм
 sendForms();
+// получение списка услуг
+serviceList();

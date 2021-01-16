@@ -6299,6 +6299,7 @@ div.wave-block:nth-child(17):after {
   text-align: center;
   border-collapse: collapse;
   background: #FBFAF8;
+  display: none;
 }
 
 .popup-repair-types-content-table__list tr {
@@ -9691,6 +9692,10 @@ strong {
 
   }
 
+  .nav-wrap-repair{
+    margin-top: 20px;
+  }
+
   .nav-list-repair {
     min-width: auto !important;
   }
@@ -9870,4 +9875,16 @@ strong {
   color: red !important;
 }
 
+.active-tab{
+  border: 3px solid #ffac05 !important;
+}
+
+.popup-repair-types-content-table__list--active{
+  display: block;
+}
+.carousel-slider-popup-repair-types{
+    display: flex;
+    flex-wrap: nowrap;
+    min-width: auto;
+}
 

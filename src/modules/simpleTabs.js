@@ -8,7 +8,9 @@ class SimpleTabs {
         this.buttons = this.wrapButtons.children;
         this.activeClassButton = activeClassButton;
         this.tabsContent = tabsContent;
-        this.tabsContentText = document.querySelectorAll(tabsContent.text);
+        if (tabsContent.text){
+            this.tabsContentText = document.querySelectorAll(tabsContent.text);
+        }
     }
 
     init(){
@@ -25,7 +27,9 @@ class SimpleTabs {
 
     onClick(i) {
         this.addActiveClass([...this.buttons], i, this.activeClassButton);
-        this.addActiveClass([...this.tabsContentText], i, this.tabsContent.textActiveClass);
+        if (this.tabsContentText){
+            this.addActiveClass([...this.tabsContentText], i, this.tabsContent.textActiveClass);
+        }
         this.addActiveClass([...document.querySelectorAll(this.tabsContent.image)], i, this.tabsContent.imageActiveClass);
 
     }
