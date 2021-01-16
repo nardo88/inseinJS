@@ -2302,12 +2302,20 @@ div.wave-block:nth-child(17):after {
 }
 
 @media (max-width: 1199px){
-  
+  .portfolio-slider {
+    width: 70%;
+  }
 }
 
 @media (max-width: 1140px) {
   .portfolio-slider {
-    width: 92%;
+    // width: 92%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .portfolio-slider {
+    width: 352px;
   }
 }
 
