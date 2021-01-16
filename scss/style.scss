@@ -9793,7 +9793,7 @@ strong {
   }
 }
 
-@media (max-width: 772px){
+@media (max-width: 575px){
   .preview-block{
     display: none;
   }
@@ -9805,6 +9805,10 @@ strong {
 
   .slider-counter-responsive{
     z-index: 1000;
+  }
+
+  .popup-arrow, .slider-counter{
+    z-index: 500;
   }
 }
 
@@ -9850,9 +9854,7 @@ strong {
 
 }
 
-.popup-arrow, .slider-counter{
-  z-index: 500;
-}
+
 
 #nav-arrow-popup-designs_left{
   left: 20px;

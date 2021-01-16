@@ -65,13 +65,11 @@ const serviceList = () => {
         })
 
     const render = data => {
-        console.log(data);
 
         data.forEach((item, i) => {
             if (item.date){
                 dateItem.textContent = item.date
             } else {
-                console.log(item);
                 getButtons(item.title);
 
                 const table = document.createElement('table');

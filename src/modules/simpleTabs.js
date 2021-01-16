@@ -31,7 +31,6 @@ class SimpleTabs {
             this.addActiveClass([...this.tabsContentText], i, this.tabsContent.textActiveClass);
         }
         this.addActiveClass([...document.querySelectorAll(this.tabsContent.image)], i, this.tabsContent.imageActiveClass);
-
     }
 
     addActiveClass(arr, i, activeClass){
