@@ -11,6 +11,9 @@ const documentPopup = () => {
     transparencySlider.addEventListener('click', e => {
         const target = e.target.closest('.transparency-item__img');
         if (target) {
+            console.log(target.dataset.index);
+            documentPopupSlider.count = Number(target.dataset.index);
+            documentPopupSlider.showSlide();
             showPopup();
         }
     })
