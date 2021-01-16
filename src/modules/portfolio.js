@@ -27,7 +27,7 @@ const portfolio = () => {
             this.addStyles()
             this.addListener();
             this.adative()
-            this.getCountMax()
+            this.getCountMax();
         }
 
         addStyles() {
@@ -79,7 +79,14 @@ const portfolio = () => {
 
         adative() {
             window.addEventListener('resize', () => {
+                
+                this.slides.forEach(item => {
+                    item.style.transform = `translateX(-${0}px)`
+                })
                 this.getCountMax.bind(this)();
+                this.count = 0;
+
+                this.showHideArrow();
                 
             })
         }
