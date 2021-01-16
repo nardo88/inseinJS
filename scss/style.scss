@@ -2298,7 +2298,7 @@ div.wave-block:nth-child(17):after {
   margin-right: auto;
   border-radius: 20px;
   overflow: hidden;
-  z-index: 1;
+  z-index: 550;
 }
 
 @media (max-width: 1199px){
@@ -9819,14 +9819,16 @@ strong {
     z-index: 1000;
   }
 
-  .popup-arrow, .slider-counter{
-    z-index: 500;
-  }
+  
 }
 
 
 .link-list-designs a{
   color: #000;
+}
+
+.popup-arrow, .slider-counter{
+  z-index: 500;
 }
 
 
