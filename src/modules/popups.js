@@ -62,6 +62,12 @@ const headerMenu = () => {
         if (target.closest('.close')) {
             closeAllPopup()
         }
+
+
+        if (target.classList.contains('popup')){
+            closeAllPopup()
+            popupDialogMenu.classList.remove('popup-dialog-menu--active');
+        }
     });
    
 
