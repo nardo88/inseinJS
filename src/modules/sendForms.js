@@ -104,7 +104,12 @@ const sendForms = () => {
     })
 
     function clearInput(form) {
-        [...form.elements].filter(item => item.tagName.toLowerCase() !== 'button' && item.type !== 'button').forEach(item => item.value = '')
+        [...form.elements].filter(item => item.tagName.toLowerCase() !== 'button' && item.type !== 'button').forEach(item => {
+            item.value = '';
+            if (item.type !== 'chackbox'){
+                item.checked = false;
+            }
+        });
     }
 
      // функция отправки формы
