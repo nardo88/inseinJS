@@ -5,7 +5,8 @@ export class EasySlider {
         prev,
         activeClass = 'active',
         counter,
-        total
+        total,
+        dots = null
 
     }){
         this.wrap = document.querySelector(wrap);
@@ -16,13 +17,34 @@ export class EasySlider {
         this.activeClass = activeClass;
         this.counter = document.querySelector(counter);
         this.total = document.querySelector(total);
-
+        if (dots){
+            this.dots = {
+                items : document.querySelectorAll(dots.selector),
+                acliveClass : dots.activeClass
+            }
+        } else {
+            this.dots = null;
+        }
     }
 
     init() {
 
         this.addListener();
         this.showCount();
+        this.showDots();
+
+    }
+
+    showDots() {
+        if (this.dots){
+            this.dots.items.forEach((item, i) => {
+
+                item.classList.remove(this.dots.acliveClass);
+                if (i === this.count){
+                    item.classList.add(this.dots.acliveClass);
+                }
+            })
+        }
     }
 
     showSlide() {
@@ -31,11 +53,11 @@ export class EasySlider {
             item.classList.remove(this.activeClass)
             if (i === this.count){
                 item.classList.add(this.activeClass);
-
             }
         })
 
         this.showCount();
+        this.showDots();
     }
 
     showCount() {
@@ -69,6 +91,17 @@ export class EasySlider {
         if (this.next && this.prev){
             this.next.addEventListener('click', this.nextSlide.bind(this));
             this.prev.addEventListener('click', this.prevSlide.bind(this));
+        }
+
+        if (this.dots){
+            this.dots.items.forEach((item, i) => {
+                item.addEventListener('click', () => {
+                    this.count = i;
+                    this.showSlide();
+                })
+                
+            })
+
         }
     }
 } 

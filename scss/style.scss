@@ -9904,3 +9904,13 @@ strong {
     min-width: auto;
 }
 
+
+.slider-dots{
+  display: flex;
+}
+
+@media (max-width: 450px){
+  .slider-dots{
+    display: none;
+  } 
+}
