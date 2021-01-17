@@ -31,12 +31,14 @@ const prompts = () => {
     
 
     formulaItemIcon.forEach(item => {
-        item.addEventListener('mouseover', e => {
+        item.addEventListener('mouseover', function (e) {
             showPromt(e.target.parentElement.children[0], item)
+            this.classList.add('active-item')
         })
         // при отведении возвращаем все назад
-        item.addEventListener('mouseout', e => {
+        item.addEventListener('mouseout', function (e) {
             const popup = e.target.parentElement.children[0];
+            this.classList.remove('active-item')
             
             hidePromt(popup)
 
