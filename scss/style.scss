@@ -5427,6 +5427,7 @@ div.wave-block:nth-child(17):after {
 }
 
 .popup-dialog-menu {
+  opacity: 0;
   position: absolute;
   visibility: visible;
   top: 0;
@@ -9913,4 +9914,9 @@ strong {
   .slider-dots{
     display: none;
   } 
+}
+
+
+.popup-dialog-menu--active{
+  opacity: 1;
 }
