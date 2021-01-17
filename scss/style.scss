@@ -9204,7 +9204,7 @@ strong {
     display: -ms-flexbox;
     display: flex;
     max-width: 222px;
-    min-height: 109px;
+    min-height: auto;
     margin-left: auto;
     margin-right: auto;
     height: 14px;
@@ -9214,6 +9214,7 @@ strong {
     -webkit-transition: 0.3s;
     transition: 0.3s;
     overflow: hidden;
+    padding: 10px;
   }
 
   .mobile-row td:nth-child(1) {
@@ -9934,4 +9935,20 @@ strong {
   #designs-counter{
     z-index: 500;
   }
+
+  tbody{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .popup-repair-types-content-table__list{
+    padding: 0; 
+  }
+
+  .mobile-row{
+    max-width: 90%;
+  }
 }
+
+
