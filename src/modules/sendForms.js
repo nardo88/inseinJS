@@ -1,4 +1,5 @@
 import { closeAllPopup } from './popups'
+import { scrollOff } from './popups';
 
 class Validate {
     constructor({
@@ -203,6 +204,7 @@ const sendForms = () => {
         popupThankTitle.textContent = message;
         popupThankDescr.textContent = description;
         popupThank.classList.add('visible');
+        scrollOff();
 
     } 
     // popup-thank 

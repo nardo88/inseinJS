@@ -4,7 +4,16 @@ export const closeAllPopup = () => {
     popup.forEach(item => {
         item.classList.remove('visible')
     })
+    scrollOn();
 }
+
+export const scrollOff = () => {
+    document.body.style.overflowY = 'hidden';
+}
+export const scrollOn = () => {
+    document.body.style.overflowY = 'auto';
+}
+
 
 const headerMenu = () => {
    const popupDialogMenu = document.querySelector('.popup-dialog-menu');
@@ -28,14 +37,18 @@ const headerMenu = () => {
         // закрываем меню
         if (target.closest('.close-menu')) {
             toggleMenu();
+            scrollOn();
+            
         }
         // открываем меню
         if (target.closest('.menu__icon')) {
             toggleMenu();
+            scrollOff();
         }
         // скролл до нужной позиции
         if (target.closest('.popup-menu-nav__item')){
             e.preventDefault();
+            scrollOn();
             const scrollHeight = document.getElementById(target.href.split('#')[1]).offsetTop;
             toggleMenu();
             window.scrollTo({top: scrollHeight, behavior: 'smooth'});
@@ -48,24 +61,28 @@ const headerMenu = () => {
         // открытие модалки по клику виды ремонта
         if (target.parentElement.matches('.link-list-repair')){
             openPopupRepairTypes()
+            scrollOff();
         }
         // открытие модалки по клику в меню
         if (target.parentElement.matches('.link-list-menu')) {
             e.preventDefault();
             toggleMenu();
             openPopupRepairTypes()
+            scrollOff();
         }
         // открытие модалки политика конфиденциальности
         if (target.matches('.link-privacy')) {
             const popupPrivacy = document.querySelector('.popup-privacy');
             popupPrivacy.classList.add('visible');
+            scrollOff();
+
         }
         // закрытие всех модалок при нажатии на крестик
         if (target.closest('.close')) {
             closeAllPopup()
         }
 
-
+        // закрытие модалок по клику overlay
         if (target.classList.contains('popup')){
             closeAllPopup()
             popupDialogMenu.classList.remove('popup-dialog-menu--active');

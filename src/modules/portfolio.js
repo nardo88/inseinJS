@@ -1,4 +1,5 @@
 import sliderForRepair from './sliderForRepair'
+import { scrollOff } from './popups';
 
 
 const portfolio = () => {
@@ -126,7 +127,8 @@ const portfolio = () => {
     mobileSlider.init();
 
     const showModalPortfolio = () => {
-        popupPortfolio.classList.add('visible')
+        popupPortfolio.classList.add('visible');
+        scrollOff();
     }
 
     portfolioSliderWrap.addEventListener('click', e => {

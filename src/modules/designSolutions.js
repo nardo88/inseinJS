@@ -3,6 +3,8 @@
 
 'use strict'
 import { Carousel } from './problems';
+import { scrollOff } from './popups';
+
 
 
 const designSolutions = () => {
@@ -290,6 +292,7 @@ const designSolutions = () => {
             popup.classList.add('visible');
             addActive(popupDesignsSliderItem, 0, 'popup-designs-slider__item--active')
             showSliderItemPopup(0);
+            scrollOff();
             
         }
     })

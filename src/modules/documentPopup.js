@@ -1,4 +1,7 @@
+// блок с документами
+
 import { EasySlider } from './documents';
+import { scrollOff } from './popups';
 
 const documentPopup = () => {
     const transparencySlider = document.querySelector('.transparency-slider');
@@ -14,6 +17,7 @@ const documentPopup = () => {
             documentPopupSlider.count = Number(target.dataset.index);
             documentPopupSlider.showSlide();
             showPopup();
+            scrollOff();
         }
     })
 
