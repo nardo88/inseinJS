@@ -9925,3 +9925,13 @@ strong {
 .popup-dialog-menu--active{
   opacity: 1;
 }
+
+#designs-counter{
+  z-index: 1;
+}
+
+@media (max-width: 575px){
+  #designs-counter{
+    z-index: 500;
+  }
+}
