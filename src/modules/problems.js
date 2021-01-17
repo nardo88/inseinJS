@@ -119,14 +119,14 @@ const problems = () => {
     const problemsItem = document.querySelectorAll('.problems-item__icon--desctop');
 
     problemsItem.forEach(item => {
-        item.addEventListener('mouseover', e => {
+        item.addEventListener('mouseover', function (e) {
             const target = e.target.closest('.problems-item__icon--desctop');
             if (target) {
                 showPromt(target.children[0], item)
             }
         })
 
-        item.addEventListener('mouseout', e => {
+        item.addEventListener('mouseout', function (e) {
             const target = e.target.closest('.problems-item__icon--desctop');
             if (target) {
                 const popup = target.children[0];
