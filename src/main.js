@@ -1,5 +1,6 @@
 'use strict'
-
+import "@babel/polyfill";
+import './modules/polyfills';
 import phoneNumbers from './modules/phoneNumbers';
 import popups from './modules/popups';
 import maskForPhones from './modules/maskForPhones';
